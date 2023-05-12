@@ -4,14 +4,10 @@ import chars
 
 
 def run():
-    # keys, values = utils.get_population()
-    # print(keys, values)
-
     path = "./data.csv"
     data = read_csv.read_csv(path)
 
-    data_filtered = data[0: 10]
-    print(data_filtered)
+    data_filtered = data[0: 5]
     
     # country = input('Enter a country: ')
     # print(f'{country} population by year')
@@ -23,13 +19,13 @@ def run():
     #     return
     
     # keys, values = utils.get_population_by_year(new_data[0])
-    # print(keys, values)
+    # chars.generate_bar_chart(keys, values)
 
-    keys, values = utils.get_world_population_percentage(data)
+    # keys, values = utils.get_world_population_percentage(data)
+    # chars.generate_pie_chart(keys, values)
 
-    # keys, values = utils.get_country_ranking_by_population(data_filtered)
-
-    chars.generate_pie_chart(keys, values)
+    keys, values, ranks = utils.get_population_average(data_filtered)
+    chars.generate_rank_barh_chart(keys, values, ranks)
 
 
 
