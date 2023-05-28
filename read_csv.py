@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 def read_csv(path):
     with open(path, "r") as file:
@@ -12,6 +13,9 @@ def read_csv(path):
             # dict_data = {key: value for key, value in iter}
             data.append(dict_data)
         return data
+    
+def read_csv_pandas(path):
+    return pd.read_csv(path)
 
 if __name__ == "__main__":
     path = "./data.csv"

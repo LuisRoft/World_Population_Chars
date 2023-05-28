@@ -32,14 +32,24 @@ def get_world_population_percentage(data):
 def get_population_average(data):
     new_dict_poblation = {}
     ranks = [item['Rank'] for item in data]
-
+    continent = data[0]['Continent']
+    
     for item in data:
         data_population = [int(item['2022 Population']), int(item['2020 Population']), int(item['2015 Population']), int(item['2010 Population']), int(item['2000 Population']), int(item['1990 Population']), int(item['1980 Population']), int(item['1970 Population'])]
         new_dict_poblation[item['Country/Territory']] = sum(data_population) / len(data_population)  
 
     keys = list(new_dict_poblation.keys())
     values = list(new_dict_poblation.values())
-    return keys, values, ranks
+    return keys, values, ranks, continent
+
+
+def get_population_average_pandas(data):
+    ranks = data['Rank'].values
+    country = data['Country/Territory'].values
+    continent = data['Continent'].values[0]
+
+    return country, ranks, continent
+
 
 def get_country_ranking_by_population(data):
     new_dict = {f"Rank {item['Rank']}": int(item['Rank']) for item in data}    
